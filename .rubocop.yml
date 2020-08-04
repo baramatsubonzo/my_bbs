@@ -1,0 +1,69 @@
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'vendor/**/*'
+    - '**/Rakefile'
+    - '**/Gemfile'
+    - '**/config.ru'
+    - '**/*/schema.rb'
+  TargetRubyVersion: 2.6
+  TargetRailsVersion: 6.0
+  DisplayCopNames: true
+
+# Metrics
+# FYI: https://koic.hatenablog.com/entry/default-value-of-metrics-abc-size-is-hard
+Metrics/AbcSize: # 今回はfalseにする。
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+# 180文字以上は禁止する
+Metrics/LineLength:
+  Max: 180
+# ブロックの長さが長くなるのは許容。
+Metrics/BlockLength:
+  Enabled: false
+
+# Style
+# 日本語のコメントを許可する
+Style/AsciiComments:
+  Enabled: false
+# クラスにコメントを強制しない
+Style/Documentation:
+  Enabled: false
+# 1行で書くべき if / unless ステートメントに対して警告を出す。
+Style/IfUnlessModifier: # １行で書かな方が読みやすい場合もある
+  Enabled: false
+# 複数行の場合は `{ ... }` ではなく `do ... end` を使うべきというチェック項目
+Style/BlockDelimiters:
+  Enabled: false
+# 制御構文で条件式のネストは避けるため、不正なデータを弾きたいときはガード節を使うのがいい。
+# ガード節とは、できるだけ素早く関数から抜けられるようにと関数の先頭に置かれている条件文のこと
+Style/GuardClause: # 今回は、そこまでルールに縛られなくていいと考えるため。今後ガード節を導入するのはあり。
+  Enabled: false
+
+# Layout
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# RSpec
+RSpec/ContextWording:
+  Enabled: false # context の書き方は強制しない
+RSpec/NestedGroups:
+  Enabled: false # テストの nest の上限を外す
+RSpec/MultipleExpectations:
+  Enabled: false # 一つの it 節内に複数の expect を許可する
+RSpec/AnyInstance:
+  Enabled: false # allow_any_instance_of の利用を許可
+RSpec/ExampleLength:
+  Enabled: false # 一つの it 節の長さに関する制限を外す
+RSpec/MultipleDescribes:
+  Enabled: false # トップレベルに複数の RSpec.describe do ... end 節が並ぶことを許可

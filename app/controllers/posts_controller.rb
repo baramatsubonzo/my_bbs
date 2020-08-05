@@ -11,9 +11,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.save!
-    redirect_to posts_path
+    @post = current_user.posts.build(post_params)
+    if @post.save
+      flash[:success] = '投稿しました！'
+      redirect_to posts_path
+    else
+      render 'posts/new'
+    end
   end
 
   def edit

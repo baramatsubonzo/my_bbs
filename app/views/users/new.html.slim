@@ -1,6 +1,6 @@
 h1 ユーザー登録
 
-= form_with model: @user, class: 'form-horizontal' do |f|
+= form_with model: @user, local: true, class: 'form-horizontal' do |f|
   .form-group
     = f.label :name
     = f.text_field :name, class: 'form-control'

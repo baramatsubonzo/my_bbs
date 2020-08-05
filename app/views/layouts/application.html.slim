@@ -10,6 +10,13 @@ html
   body
     header.navbar.navbar-expand-sm.navbar-light.bg-light
       .container
-        = link_to 'MyBBS', 'root_path', class: 'navbar-brand'
+        = link_to 'MyBBS', root_path, class: 'navbar-brand'
+      ul.navbar-nav.ml-auto
+        - if current_user
+          li.nav-item= link_to '投稿一覧', posts_path, class: 'nav-link'
+          li.nav-item= link_to 'ユーザー一覧', users_path, class: 'nav-link'
+          li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+        - else
+          li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
     .container
       = yield

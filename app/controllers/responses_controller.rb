@@ -8,7 +8,9 @@ class ResponsesController < ApplicationController
   end
 
   def create
-
+    @response = current_user.responses.build(post_id: params[:post_id])
+    @response.save
+    redirect_to posts_path
   end
 
   private

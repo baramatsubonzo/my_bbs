@@ -1,4 +1,13 @@
-h1
-  | Posts#index
-p
-  | Find me in app/views/posts/index.html.erb
+h1 投稿一覧
+
+body
+  - @posts.each do |post|
+    .card.card-body
+      h5.card-titles 
+        = post.title
+      h6.card-subtitle.mb-2.text-muted  
+        = post.user.name
+      p.card-text
+        = post.content
+      h6.card-subtitle.mb-2.text-muted  
+        = post.created_at

@@ -43,6 +43,8 @@ group :development, :test do
   gem 'rubocop-performance', require: false
   # rspec
   gem 'rspec-rails'
+  # pry
+  gem 'pry-rails'
 end
 
 group :development do

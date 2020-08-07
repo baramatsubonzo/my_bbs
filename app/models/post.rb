@@ -5,4 +5,5 @@ class Post < ApplicationRecord
   belongs_to :user
 
   has_many :responses
+  has_many :categories, dependent: :destroy
 end

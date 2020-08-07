@@ -1,17 +1,28 @@
-h1
-  | 投稿詳細ページ
-h3
-  = @post.user.name
-h3
-  = @post.content
-h2
-  | コメント一覧
+h1 投稿詳細
+
+body
+  .card.card-body
+    h5.card-titles 
+      = @post.title
+    h6.card-subtitle.mb-2.text-muted  
+      = "#{@post.user.name}さんによる投稿"
+    p.card-text
+      = @post.content
+    h6.card-subtitle.mb-2.text-muted  
+      = @post.created_at
+<br>
+
+h2 コメント一覧
 - @responses.each do |res|
-  div
-    a href="/users/#{@post.user.id}"
-    = res.user.name
-    = res.content
-= form_with(model: [@post, Response.new], remote: true) do |f|
-  = f.text_field :content
-  = f.submit 'コメントする'
-= link_to "ホームへ戻る", root_path
+  .card.card-body
+      h6.card-subtitle.mb-2.text-muted  
+        = "#{res.user.name}さんのコメント"
+      p.card-text
+        = res.content
+      h6.card-subtitle.mb-2.text-muted  
+        = res.created_at
+<br>
+h3 新規コメント作成
+= form_with model: [@post, Response.new], remote: true do |f|
+  = f.text_area :content, class: 'form-control', row: 10
+  = f.submit 'コメントする', class: 'btn btn-primary'

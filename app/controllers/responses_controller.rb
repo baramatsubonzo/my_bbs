@@ -1,21 +1,27 @@
 class ResponsesController < ApplicationController
-  def index
-    @response = Response.all
-  end
+  before_action :set_post
 
   def new
-    @response = Response.new
   end
 
   def create
-    @response = current_user.responses.build(post_id: params[:post_id])
-    @response.save
-    redirect_to posts_path
+    binding.pry
+    @post.responses.create! responses_params
+    redirect_to @post
+  end
+
+  def destroy
+    @post.responses.destroy params[:id]
+    redirect_to @post
   end
 
   private
 
-  def response_params
-    params.require(:response).permit(:content, :user_id, :post_id)
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
+
+  def responses_params
+    params.required(:response).permit(:content)
   end
 end

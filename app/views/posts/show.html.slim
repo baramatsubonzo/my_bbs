@@ -1,4 +1,13 @@
-h1
-  | Posts#show
 p
-  | Find me in app/views/posts/show.html.erb
+  span 投稿内容:
+  = @post.title
+  = form_for([@post, @response]) do |f|
+  p
+- @responses.each do |response|
+  hr/
+  p
+    span email:
+    = link_to response.user.name, user_path(response.user.id)
+  p
+    span コメント内容:
+    = response

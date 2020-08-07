@@ -1,2 +1,10 @@
-h1 Responses#new
-p Find me in app/views/responses/new.html.slim
+
+h1 投稿作成
+
+= form_with model: @response, local: true, class: 'form-horizontal' do |f|
+  .form-group
+    = f.label @current_user.name
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control', row: 10
+  = f.submit class: 'btn btn-primary'

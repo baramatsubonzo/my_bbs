@@ -4,6 +4,10 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @user = @post.user
+    @response = current_user.response.build
+    @responses = @post.response
   end
 
   def new

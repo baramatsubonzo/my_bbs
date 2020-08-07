@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    binding.pry
     if @post.save
       flash[:success] = '投稿しました！'
       redirect_to root_path
@@ -27,6 +28,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :category_id)
   end
 end

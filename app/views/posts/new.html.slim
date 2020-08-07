@@ -8,4 +8,7 @@ h1 投稿作成
   .form-group
     = f.label :content
     = f.text_area :content, class: 'form-control', row: 10
+  .form-group
+    = f.label :category_id, 'カテゴリー'
+    = f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form-control'
   = f.submit class: 'btn btn-primary'

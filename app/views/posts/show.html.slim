@@ -8,14 +8,10 @@ h2
   | コメント一覧
 - @responses.each do |res|
   div
-    |  <a href="/users/
-    = @post.user.id
-    | ">
-    = res.user
+    a href="/users/#{@post.user.id}"
+    = res.user.name
     = res.content
-    hr
-= form_for [@post, @response] do |f|
+= form_with(model: [@post, Response.new], remote: true) do |f|
   = f.text_field :content
-  br
   = f.submit 'コメントする'
 = link_to "ホームへ戻る", root_path

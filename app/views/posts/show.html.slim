@@ -1,13 +1,21 @@
-p
-  span 投稿内容:
-  = @post.title
-  = form_for([@post, @response]) do |f|
-  p
-- @responses.each do |response|
-  hr/
-  p
-    span email:
-    = link_to response.user.name, user_path(response.user.id)
-  p
-    span コメント内容:
-    = response
+h1
+  | 投稿詳細ページ
+h3
+  = @post.user.name
+h3
+  = @post.content
+h2
+  | コメント一覧
+- @responses.each do |res|
+  div
+    |  <a href="/users/
+    = @post.user.id
+    | ">
+    = res.user
+    = res.content
+    hr
+= form_for [@post, @response] do |f|
+  = f.text_field :content
+  br
+  = f.submit 'コメントする'
+= link_to "ホームへ戻る", root_path

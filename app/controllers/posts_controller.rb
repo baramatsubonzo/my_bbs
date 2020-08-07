@@ -6,8 +6,8 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @user = @post.user
-    @response = current_user.response.build
-    @responses = @post.response
+    @responses = @post.responses
+    @response = Response.new
   end
 
   def new

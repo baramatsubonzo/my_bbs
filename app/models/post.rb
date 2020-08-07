@@ -4,5 +4,5 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  has_many :response
+  has_many :responses
 end

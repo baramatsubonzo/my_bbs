@@ -2,10 +2,10 @@ class ResponsesController < ApplicationController
   before_action :set_post
 
   def create
-    post = Post.find(params[:post_id])
-    response = current_user.responses.build(response_params)
-    response.post_id = post.id
-    response.save
+    @post = Post.find(params[:post_id])
+    @response = current_user.responses.build(response_params)
+    @response.post_id = post.id
+    @response.save
     redirect_to post_path(post.id)
   end
 

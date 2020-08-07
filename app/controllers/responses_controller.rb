@@ -5,9 +5,8 @@ class ResponsesController < ApplicationController
     post = Post.find(params[:post_id])
     response = current_user.responses.build(response_params)
     response.post_id = post.id
-    response.save
     
-    redirect_to root_path
+    redirect_to post_path(post.id) if response.save
   end
 
   private

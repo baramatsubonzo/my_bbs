@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'post_category_relations/create'
   get 'categories/index'
   root to: 'posts#index'
   get '/login', to: 'sessions#new'
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   
   resources :posts, only: [:index, :show, :new, :create] do
     resources :responses, only: [:create]
+    resource :post_category_relationships
+    get :category
   end
 
   resources :categories

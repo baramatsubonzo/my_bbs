@@ -10,5 +10,8 @@ h1 投稿作成
     = f.text_area :content, class: 'form-control', row: 10
   .form-group
     = f.label :category_id, 'カテゴリー'
-    = f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form-control'
+    = f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |category|
+      = category.label do
+        = category.check_box
+        = category.text
   = f.submit class: 'btn btn-primary'

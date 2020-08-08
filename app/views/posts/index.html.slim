@@ -11,5 +11,6 @@ body
         = post.content
       h6.card-subtitle.mb-2.text-muted  
         = post.created_at
-      / h7.card-subtitle.mb-2.text-muted
-      /   = post.category.name
+      h7.card-subtitle.mb-2.text-muted
+        - post.post_category_relations.each do |c|
+          = c.category.name

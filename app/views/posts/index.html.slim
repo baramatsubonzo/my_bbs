@@ -16,8 +16,8 @@ body
         = "投稿者: #{post.user.name} さん"
       p.card-text
         = post.content
-      h6.card-subtitle.mb-2.text-muted  
-        = post.created_at
+      h6.card-subtitle.mb-2.text-muted
+        = post.created_at.strftime('%Y年%m月%d日 %H:%M')
       h7.card-subtitle.mb-2.text-muted
         - post.post_category_relations.each do |c|
           = c.category.name

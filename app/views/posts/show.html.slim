@@ -9,7 +9,7 @@ body
     p.card-text
       = @post.content
     h6.card-subtitle.mb-2.text-muted  
-      = @post.created_at
+      = @post.created_at.strftime('%Y年%m月%d日 %H:%M')
 <br>
 
 h2 コメント一覧
@@ -20,7 +20,7 @@ h2 コメント一覧
       p.card-text
         = res.content
       h6.card-subtitle.mb-2.text-muted  
-        = res.created_at
+        = res.created_at.strftime('%Y年%m月%d日 %H:%M')
 <br>
 
 h3 新規コメント作成

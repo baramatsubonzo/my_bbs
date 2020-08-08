@@ -2,24 +2,24 @@ h1 投稿詳細
 
 body
   .card.card-body
-    h5.card-titles 
-      = @post.title
-    h6.card-subtitle.mb-2.text-muted  
-      = "#{@post.user.name}さんによる投稿"
+    h4.card-titles 
+      = "「#{@post.title}」"
     p.card-text
       = @post.content
-    h6.card-subtitle.mb-2.text-muted  
+    h7.card-subtitle.mb-2.text-muted  
+      = "by #{@post.user.name} さん"
+    h9.card-subtitle.mb-2.text-muted
       = @post.created_at.strftime('%Y年%m月%d日 %H:%M')
 <br>
 
 h2 コメント一覧
 - @responses.each do |res|
   .card.card-body
-      h6.card-subtitle.mb-2.text-muted  
-        = "#{res.user.name}さんのコメント"
       p.card-text
         = res.content
-      h6.card-subtitle.mb-2.text-muted  
+      h7.card-subtitle.mb-2.text-muted  
+        = "by #{res.user.name} さん"
+      h9.card-subtitle.mb-2.text-muted  
         = res.created_at.strftime('%Y年%m月%d日 %H:%M')
 <br>
 

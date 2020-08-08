@@ -20,7 +20,8 @@ body
         = post.created_at.strftime('%Y年%m月%d日 %H:%M')
       h7.card-subtitle.mb-2.text-muted
         - post.post_category_relations.each do |c|
-          = c.category.name
+          .badge.badge-info
+            = c.category.name
       p.card-text
         = link_to post_path(post) do
             svg.bi.bi-chat[width="1em" height="1em" viewbox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"]

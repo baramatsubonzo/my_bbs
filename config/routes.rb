@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   
   resources :posts, only: [:index, :show, :new, :create] do
     resources :responses, only: [:create]
-    resource :post_category_relationships
+    resource :post_category_relationships, only: [:create]
     get :category
   end
 
-  resources :categories
+  resources :categories, only: [:index, :new, :create]
 end
